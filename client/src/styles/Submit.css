@@ -1,0 +1,29 @@
+.submit-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.submit-container {
+    font-family: 'Arial', sans-serif;
+}
+
+.submit-title {
+    text-align: center;
+}
+
+.submit-desc {
+    text-align: center;
+}
+
+.submit-form {
+    display: flex;
+}
+
+.submit-left, .submit-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
