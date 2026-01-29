@@ -1,0 +1,31 @@
+.about-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 100px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+.about-title {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 0;
+}
+
+.about-subtitle {
+    font-family: 'Arial', sans-serif;
+    color: rgb(64, 172, 255);
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 40px;
+}
