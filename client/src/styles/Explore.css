@@ -1,0 +1,41 @@
+.explore-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.explore-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.explore-filters {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.explore-desc {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.explore-search {
+    width: 35vw;
+    height: 5vh;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.explore-form-control {
+    background-color: white;
+}
+
+.explore-date-picker {
+    background-color: white;
+}
