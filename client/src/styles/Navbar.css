@@ -1,0 +1,30 @@
+nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 40px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.links {
+    text-align: right;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navLinkSubmit {
+    text-decoration: none;
+    color: white;
+    background-color: #76b8ff;
+    padding: 8px 30px;
+    border-radius: 10px;
+    border: 3px solid rgb(64, 172, 255);
+    font-weight: bold;
+}
