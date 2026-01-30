@@ -1,5 +1,5 @@
-import react from 'react';
 import {useState} from 'react';
+import { Snackbar, Alert } from "@mui/material";
 import '../styles/Submit.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -20,12 +20,73 @@ function Submit() {
     const [title, setTitle] = useState('');
     const [emotion, setEmotion] = useState('');
     const [content, setContent] = useState('');
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState("");
+    const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+
 
     const today = new Date().toISOString().split('T')[0];
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!title || !emotion || !content) {
+            setSnackbarMessage("Please fill in all fields");
+            setSnackbarSeverity("error");
+            setSnackbarOpen(true);
+            return;
+        }
+        const entryData = {
+            title,
+            emotion,
+            content,
+        };
+
+        fetch('http://localhost:5000/api/entries', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(entryData),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+            // Clear form fields after successful submission
+            setTitle('');
+            setEmotion('');
+            setContent('');
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+        setSnackbarMessage("Thanks for your submission!");
+        setSnackbarSeverity("success");
+        setSnackbarOpen(true);
+
+        setTitle("");
+        setEmotion("");
+        setContent("");
+    }
 
     return (
         <div className="submit-page">
             <Navbar />
+            <Snackbar
+            open={snackbarOpen}
+            autoHideDuration={3000}
+            onClose={() => setSnackbarOpen(false)}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+                <Alert
+                    onClose={() => setSnackbarOpen(false)}
+                    severity={snackbarSeverity}
+                    sx={{ width: "100%" }}
+                >
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
             <div className="submit-container">
                 <h1 className="submit-title">Submit Your Journal Entry</h1>
                 <p className="submit-desc">How was your day? Share your journal entry with us by filling out the form below.</p>
@@ -106,7 +167,7 @@ function Submit() {
 
                             {/* Submit */}
                             <Box mt={3} textAlign="right">
-                                <Button variant="contained">
+                                <Button variant="contained" onClick={handleSubmit}>
                                     Submit
                                 </Button>
                             </Box>

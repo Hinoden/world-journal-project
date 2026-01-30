@@ -9,4 +9,4 @@ const entrySchema = new mongoose.Schema({
 
 const entryModel = mongoose.model('Entry', entrySchema);
 
-export default Entry;
+export default entryModel;
