@@ -1,4 +1,4 @@
-.home-page {
+/* .home-page {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -55,4 +55,106 @@
 
 .highlight {
     color: rgb(64, 172, 255);
+} */
+
+.home-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Centered container with safe scaling */
+.home-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 100px);
+    gap: 40px;
+}
+
+/* LEFT SIDE */
+.home-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+/* RIGHT SIDE */
+.home-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+/* Title scales but keeps hierarchy */
+.home-title {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: left;
+    margin-top: 50px;
+
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1.1;
+
+    max-width: 700px;
+}
+
+/* Description scales smoothly */
+.home-desc {
+    font-family: 'Arial', sans-serif;
+    color: #555;
+    text-align: left;
+
+    font-size: clamp(16px, 2.2vw, 22px);
+    line-height: 1.5;
+
+    max-width: 600px;
+    margin: 0;
+}
+
+/* Button stays consistent */
+.home-button {
+    text-decoration: none;
+    color: white;
+    background-color: #76b8ff;
+    padding: 10px 32px;
+    border-radius: 10px;
+    border: 3px solid rgb(64, 172, 255);
+    font-weight: bold;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+/* Accent */
+.highlight {
+    color: rgb(64, 172, 255);
+}
+
+/* ========================= */
+/* 📱 Mobile / Tablet Fixes */
+/* ========================= */
+
+@media (max-width: 900px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home-left {
+        align-items: center;
+    }
+
+    .home-title,
+    .home-desc {
+        text-align: center;
+    }
+
+    .home-title {
+        margin-top: 30px;
+    }
 }

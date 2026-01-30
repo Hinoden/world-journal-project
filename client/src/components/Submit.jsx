@@ -33,7 +33,7 @@ function Submit() {
                     <Card
                         sx={{
                             maxWidth: 600,
-                            minWidth: 600,
+                            minWidth: 100,
                             margin: '0 auto',
                             borderRadius: 3,
                             boxShadow: 3,
@@ -94,7 +94,6 @@ function Submit() {
                                     label="Emotion"
                                     onChange={(e) => setEmotion(e.target.value)}
                                     >
-                                    <MenuItem value="">None</MenuItem>
                                     <MenuItem value="happy">Happy</MenuItem>
                                     <MenuItem value="sad">Sad</MenuItem>
                                     <MenuItem value="excited">Excited</MenuItem>
