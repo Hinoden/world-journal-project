@@ -122,8 +122,8 @@ function Explore() {
                     <div key={entry._id} className="journal-card">
                         <div className="journal-card-top">
                             <h3>{entry.title}</h3>
-                            <p className="journal-card-emotion">{entry.emotion}
-                                <span class="material-symbols-outlined">{getEmoticonIcon(entry.emotion)}</span>
+                            <p className={`journal-card-emotion emotion-${entry.emotion}`}>{entry.emotion}
+                                <span className="material-symbols-outlined">{getEmoticonIcon(entry.emotion)}</span>
                             </p>
                         </div>
                         <div className="journal-card-bottom">
@@ -141,7 +141,7 @@ function Explore() {
                     <div className="journal-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="journal-modal-top">
                             <h2>{selectedEntry.title}</h2>
-                            <p className="journal-modal-emotion">{selectedEntry.emotion}
+                            <p className={`journal-modal-emotion emotion-${selectedEntry.emotion}`}>{selectedEntry.emotion}
                                 <span className="material-symbols-outlined">{getEmoticonIcon(selectedEntry.emotion)}</span>
                             </p>
                             <button className="close-btn" onClick={() => setSelectedEntry(null)}>✕</button>

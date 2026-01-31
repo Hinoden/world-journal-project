@@ -197,6 +197,30 @@
     gap: 2px;
 }
 
+.emotion-happy {
+    color: #fbc02d;
+}
+
+.emotion-sad {
+    color: #1976d2;
+}
+
+.emotion-excited {
+    color: #ff80f0;
+}
+
+.emotion-anxious {
+    color: #9c27b0;
+}
+
+.emotion-angry {
+    color: #d32f2f;
+} 
+
+.emotion-bored {
+    color: #32d54b;
+}
+
 .journal-modal-top {
   display: flex;
   justify-content: space-between;
