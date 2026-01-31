@@ -1,6 +1,5 @@
-import react from 'react';
 import '../styles/Explore.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   FormControl,
   InputLabel,
@@ -16,6 +15,51 @@ function Explore() {
     const [emotion, setEmotion] = useState('');
     const [date, setDate] = useState('');
     const [search, setSearch] = useState('');
+    const [entries, setEntries] = useState([]);
+
+    const formatDate = (isoDate) => {
+        return new Date(isoDate).toISOString().split('T')[0];
+    }
+
+    useEffect(() => {
+    fetch('http://localhost:5000/api/entries')
+        .then(res => res.json())
+        .then(data => setEntries(data))
+        .catch(err => console.error(err));
+    }, []);
+
+    const filteredEntries = entries.filter(entry => {
+    const matchesEmotion =
+        !emotion || entry.emotion === emotion;
+
+    const matchesDate =
+        !date || formatDate(entry.date) === date;
+
+    const matchesSearch =
+        entry.title.toLowerCase().includes(search.toLowerCase()) ||
+        entry.content.toLowerCase().includes(search.toLowerCase());
+
+    return matchesEmotion && matchesDate && matchesSearch;
+    });
+
+    const getEmoticonIcon = (emotion) => {
+        switch (emotion) {
+            case 'happy':
+            return 'sentiment_satisfied';
+            case 'sad':
+            return 'sentiment_sad';
+            case 'excited':
+            return 'mood_heart';
+            case 'anxious':
+            return 'sentiment_stressed';
+            case 'angry':
+            return 'sentiment_very_dissatisfied';
+            case 'bored':
+            return 'mood_bad';
+        }
+    };
+
+
     return (
         <div className="explore-page">
             <Navbar />
@@ -55,11 +99,28 @@ function Explore() {
                         size="small"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
-                        InputLabelProps={{ shrink: true}}
+                        slotProps={{ inputLabel: { shrink: true }, }}
                     />
                 </Box>
                 <div className="explore-entries">
-                    {/* Journal entries will be displayed here */}
+                {filteredEntries.length === 0 ? (
+                    <p>No entries found.</p>
+                ) : (
+                    filteredEntries.map(entry => (
+                    <div key={entry._id} className="journal-card">
+                        <div className="journal-card-top">
+                            <h3>{entry.title}</h3>
+                            <p className="journal-card-emotion">{entry.emotion}
+                                <span class="material-symbols-outlined">{getEmoticonIcon(entry.emotion)}</span>
+                            </p>
+                        </div>
+                        <div className="journal-card-bottom">
+                            <p className="journal-card-date"><strong>Date:</strong> {formatDate(entry.date)}</p>
+                            <p className="journal-card-content">{entry.content}</p>
+                        </div>
+                    </div>
+                    ))
+                )}
                 </div>
             </div>
             <Footer />
