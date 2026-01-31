@@ -19,6 +19,10 @@ nav {
     font-weight: bold;
 }
 
+.navLink:hover {
+    color: #76b8ff;
+}
+
 .navLinkSubmit {
     text-decoration: none;
     color: white;
@@ -27,4 +31,10 @@ nav {
     border-radius: 10px;
     border: 3px solid rgb(64, 172, 255);
     font-weight: bold;
+}
+
+.navLinkSubmit:hover {
+    background-color: #5aa6e6;
+    border-color: #5aa6e6;
+    color: white;
 }

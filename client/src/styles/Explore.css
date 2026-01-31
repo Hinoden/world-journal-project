@@ -226,6 +226,33 @@
   margin: 0;
 }
 
+.to-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.5;
+
+  border: none;
+  background-color: #1976d2;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+
+  cursor: pointer;
+  z-index: 1000;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.to-top-btn:hover {
+  background-color: #1976d2;
+  opacity: 1;
+}
+
 /* ========================= */
 /* 📱 Mobile Optimization */
 /* ========================= */

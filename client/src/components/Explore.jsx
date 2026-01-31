@@ -18,6 +18,8 @@ function Explore() {
     const [search, setSearch] = useState('');
     const [entries, setEntries] = useState([]);
     const [selectedEntry, setSelectedEntry] = useState(null);
+    const [showToTop, setShowToTop] = useState(false);
+
 
     const formatDate = (isoDate) => {
         return new Date(isoDate).toISOString().split('T')[0];
@@ -61,6 +63,14 @@ function Explore() {
         }
     };
 
+    useEffect(() => {
+    const handleScroll = () => {
+        setShowToTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <div className="explore-page">
@@ -148,6 +158,16 @@ function Explore() {
                         </div>
                     </div>
                 </div>
+            )}
+            {showToTop && (
+            <button
+                className="to-top-btn"
+                onClick={() =>
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
+            >
+                ↑
+            </button>
             )}
             <Footer />
         </div>
