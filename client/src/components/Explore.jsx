@@ -6,7 +6,8 @@ import {
   Select,
   MenuItem,
   TextField,
-  Box
+  Box,
+  Button
 } from '@mui/material';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -16,6 +17,7 @@ function Explore() {
     const [date, setDate] = useState('');
     const [search, setSearch] = useState('');
     const [entries, setEntries] = useState([]);
+    const [selectedEntry, setSelectedEntry] = useState(null);
 
     const formatDate = (isoDate) => {
         return new Date(isoDate).toISOString().split('T')[0];
@@ -118,11 +120,35 @@ function Explore() {
                             <p className="journal-card-date"><strong>Date:</strong> {formatDate(entry.date)}</p>
                             <p className="journal-card-content">{entry.content}</p>
                         </div>
+                        <Button variant="outlined" className="read-more-btn" onClick={() => setSelectedEntry(entry)}>Read More</Button>
                     </div>
                     ))
                 )}
                 </div>
             </div>
+            {selectedEntry && (
+                <div className="journal-modal-overlay" onClick={() => setSelectedEntry(null)}>
+                    <div className="journal-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className="journal-modal-top">
+                            <h2>{selectedEntry.title}</h2>
+                            <p className="journal-modal-emotion">{selectedEntry.emotion}
+                                <span className="material-symbols-outlined">{getEmoticonIcon(selectedEntry.emotion)}</span>
+                            </p>
+                            <button className="close-btn" onClick={() => setSelectedEntry(null)}>✕</button>
+                        </div>
+
+                        <div className="journal-modal-bottom">
+                            <p className="journal-modal-date">
+                                <strong>Date:</strong> {formatDate(selectedEntry.date)}
+                            </p>
+
+                            <p className="journal-modal-content">
+                                {selectedEntry.content}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )}
             <Footer />
         </div>
     )
