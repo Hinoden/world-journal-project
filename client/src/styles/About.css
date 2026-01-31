@@ -75,3 +75,12 @@
 
     margin-bottom: clamp(24px, 6vw, 40px);
 }
+
+.about-link {
+    text-decoration: none;
+    color: rgb(64, 172, 255);
+}
+
+.about-link:hover {
+    text-decoration: underline;
+}
