@@ -26,7 +26,7 @@ function Explore() {
     }
 
     useEffect(() => {
-    fetch('http://localhost:5000/api/entries')
+    fetch('https://world-journal-project.vercel.app/api/entries')
         .then(res => res.json())
         .then(data => setEntries(data))
         .catch(err => console.error(err));
