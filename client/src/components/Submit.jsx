@@ -42,7 +42,7 @@ function Submit() {
             content,
         };
 
-        fetch('https://world-journal-project.vercel.app/api/entries', {
+        fetch('https://world-journal-project-api.vercel.app/api/entries', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
