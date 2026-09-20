@@ -49,3 +49,31 @@ nav {
     border-color: #5aa6e6;
     color: white;
 }
+
+/* Laptop */
+@media (max-width: 1200px) {
+    
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    nav {
+        padding: 10px 10px 10px 0px;
+    }
+
+    .logo {
+        text-align: center;
+    }
+
+    .navLinkLogo {
+        font-size: 20px;
+        text-align: center;
+        padding: 0px;
+        margin: 0px;
+    }
+}
